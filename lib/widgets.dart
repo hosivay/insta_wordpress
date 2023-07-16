@@ -3,7 +3,7 @@ import 'package:insta_wordpress/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> openUrl(link) async {
-    final Uri url = Uri.parse(link);
+  final Uri url = Uri.parse(link);
   try {
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       throw Exception('Could not launch $url');
@@ -15,15 +15,13 @@ Future<void> openUrl(link) async {
 }
 
 void sendEmail() async {
- 
-
- if (!await launchUrl(Uri.parse("mailto:hosivay@gmail.com?subject=subject&body=New%email"))) {
+  if (!await launchUrl(
+      Uri.parse("mailto:hosivay@gmail.com?subject=subject&body=New%email"))) {
     throw Exception('Could not launch ');
   } else {
     throw 'Could not launch email client.';
   }
 }
-
 
 Widget profile({required String imageUrl}) {
   return CircleAvatar(
@@ -37,7 +35,8 @@ Widget profile({required String imageUrl}) {
   );
 }
 
-Widget highlight({required String imageUrl, required String title,required String url}) {
+Widget highlight(
+    {required String imageUrl, required String title, required String url}) {
   return InkWell(
     onTap: () {
       openUrl(url);
