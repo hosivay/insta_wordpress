@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
 
 // Get information from WordPress site
 // دریافت اطلاعات از سایت وردپرسی
-  Future<void> fetchData() async {
+  Future<void> fetchData() async { 
     final api = WordPressAPI(wordpressSiteUrl);
     final res = await api.posts.fetch();
 
