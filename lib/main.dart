@@ -10,7 +10,7 @@ import 'package:html/parser.dart';
 void main() {
   runApp(const MyApp());
 }
- 
+
 // Remove <p> in description posts
 // حذف <p> در کپشن پست ها
 String removePTags(String htmlText) {
@@ -119,11 +119,11 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
               ),
-              const Column(
+               Column(
                 children: [
                   // Name user
                   // نام کاربر
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.fromLTRB(30, 4, 0, 2),
                     child: Row(
                       children: [
@@ -137,12 +137,12 @@ class _MyAppState extends State<MyApp> {
                   ),
                   // bio user
                   //بیوگرافی پیج
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.fromLTRB(30, 2, 0, 4),
                     child: Row(
                       children: [
                         Text(
-                         bio,
+                          bio,
                           style: TextStyle(
                               fontSize: 17, fontWeight: FontWeight.w400),
                         ),
@@ -152,17 +152,22 @@ class _MyAppState extends State<MyApp> {
                   // link user
                   // لینک پیج
                   Padding(
-                    padding: EdgeInsets.fromLTRB(30, 2, 0, 4),
+                    padding: const EdgeInsets.fromLTRB(30, 2, 0, 4),
                     child: Row(
                       children: [
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
                           child: Icon(Icons.link),
                         ),
-                        Text(
-                         link,
-                          style: TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.bold),
+                        InkWell(
+                        onTap: (){
+                           openUrl(wordpressSiteUrl);
+                        },
+                          child: const Text(
+                            link,
+                            style: TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ],
                     ),
@@ -176,9 +181,27 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     buttonDownDetailPage(
-                        title: "Follow", context: context, isFollow: true),
-                    buttonDownDetailPage(title: "Github", context: context),
-                    buttonDownDetailPage(title: "Email", context: context),
+                      title: "Follow",
+                      context: context,
+                      isFollow: true,
+                      onTap: () {
+                        openUrl(instagramLink);
+                      },
+                    ),
+                    buttonDownDetailPage(
+                      title: "Github",
+                      context: context,
+                      onTap: () {
+                        openUrl(githubLink);
+                      },
+                    ),
+                    buttonDownDetailPage(
+                      title: "Email",
+                      context: context,
+                      onTap: () {
+                        sendEmail();
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -196,12 +219,12 @@ class _MyAppState extends State<MyApp> {
                         children: [
                           highlight(
                               title: "Github",
-                              imageUrl:
-                                  githubImage),
+                              imageUrl: githubImage,
+                              url: githubLink),
                           highlight(
                               title: "Telegram",
-                              imageUrl:
-                                  telegramImage),
+                              imageUrl: telegramImage,
+                              url: telegramLink),
                         ],
                       ),
                     ),
@@ -231,53 +254,6 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  SizedBox buttonDownDetailPage(
-      {required BuildContext context,
-      required String title,
-      bool? isFollow = false}) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width / 3.3,
-      height: 35,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(9),
-        child: Container(
-          color: isFollow! ? Colors.blue : Colors.grey.shade200,
-          child: Center(
-              child: Text(
-            title,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 16,
-              color: isFollow ? Colors.white : Colors.grey.shade900,
-            ),
-          )),
-        ),
-      ),
-    );
-  }
-
-  // ignore: non_constant_identifier_names
-  Widget detail_INFO({required num number, required String title}) {
-    return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Column(
-        children: [
-          Text(
-            "$number",
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-          const SizedBox(
-            height: 4,
-          ),
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-          ),
-        ],
       ),
     );
   }

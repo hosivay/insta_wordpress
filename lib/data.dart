@@ -10,5 +10,11 @@ const String link = "hosivay.com/";
 const int age = 19;
 const double ver = 1.0;
 
-const String githubImage = "https://s8.uupload.ir/files/photo_2023-07-16_00-58-37_yib.jpg";
-const String telegramImage = "https://s8.uupload.ir/files/photo_2023-07-16_00-58-31_b5gi.jpg";
+const String githubImage =
+    "https://s8.uupload.ir/files/photo_2023-07-16_00-58-37_yib.jpg";
+const String telegramImage =
+    "https://s8.uupload.ir/files/photo_2023-07-16_00-58-31_b5gi.jpg";
+
+const String telegramLink = "https://t.me/hosivay";
+const String githubLink = "https://github.com/hosivay";
+const String instagramLink = "https://instagram.com/hosivay";
